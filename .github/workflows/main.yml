@@ -11,3 +11,8 @@ jobs:
 
       - name: Probar codigo
         run: python3 main.py
+
+      - name: Crear imagen Docker
+        run: docker build -t xballes/holamundo .
+      - name: Probar imagen Docker
+        run: docker run xballes/holamundo
