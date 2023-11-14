@@ -1,1 +1,1 @@
-prilplplplplnt("Hola mundo")
+print("Hola mundo")
