@@ -12,7 +12,14 @@ jobs:
       - name: Probar codigo
         run: python3 main.py
 
-      - name: Crear imagen Docker
-        run: docker build -t xballes/holamundo .
-      - name: Probar imagen Docker
-        run: docker run xballes/holamundo
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: xballes/holamundo
